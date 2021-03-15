@@ -4,33 +4,43 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    tags: [],
+    count: 0,
   };
 
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
+  handleIncrement = () => {
+    console.log("Increment +1", this);
+  };
 
-    return (
-      <ul>
-        {this.state.tags.map((tag) => (
-          <li key={tag}>tag</li>
-        ))}
-      </ul>
-    );
+  constructor() {
+    super();
+    this.handleIncrement.bind(this);
   }
 
   render() {
-    //render method controls what is displayed on page
-    //conditional statement {this.state.tags.length === 0 && "Please create a new tag!"}
-    //javascript analyses boolean on left side of && to decide whether to continue on right side, if true then returns second operand
-    /*If expr1 can be converted to true, returns expr2; else, returns expr1.
-      If a value can be converted to true, the value is so-called truthy. If a value can be converted to false, the value is so-called falsy.*/
+    let classes = this.getBadgeClasses();
+
     return (
       <div>
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {this.renderTags()}
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+  }
+
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? <h1>Zero</h1> : count; //if count === 0 then return 'Zero' ELSE return count
   }
 }
 
