@@ -16,8 +16,10 @@ class Counter extends Component {
   }*/
 
   //transform to "arrow function", inherits "this" keyword from parent class
+  //setState is method inherited from Component
   handleIncrement = () => {
     console.log("Increment +1", this);
+    this.setState({ count: this.state.count + 1 }); //pass to state, will merge or overwrite if exists
   };
 
   renderTags() {

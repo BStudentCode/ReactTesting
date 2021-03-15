@@ -9,16 +9,10 @@ class Counter extends Component {
 
   handleIncrement = () => {
     console.log("Increment +1", this);
+    this.setState({ count: this.state.count + 1 });
   };
 
-  constructor() {
-    super();
-    this.handleIncrement.bind(this);
-  }
-
   render() {
-    let classes = this.getBadgeClasses();
-
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
