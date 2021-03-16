@@ -11,8 +11,9 @@ class Counters extends Component {
     ],
   };
 
-  handleDelete = () => {
-    console.log("Event Handler Called");
+  handleDelete = (counterId) => {
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
+    this.setState({ counters: counters });
   };
 
   render() {
@@ -20,15 +21,15 @@ class Counters extends Component {
     //Easier way is to add another property to Counter eg id={counter.id} and wrap that in <h4> on counter.jsx render()
 
     //Counter onDelete=this.handleDelete --- added onDelete method in Counter and it recognises it as prop here
+    //key and id both passed as key is used internally by React and we cannot access it, but we can just pass counter object itself
     return (
       <div>
         {this.state.counters.map((counter) => (
           <Counter
             onDelete={this.handleDelete}
             key={counter.id}
-            value={counter.value}
+            counter={counter}
             selected={true}
-            id={counter.id}
           >
             <h4>Counter #{counter.id}</h4>
           </Counter>

@@ -25,6 +25,12 @@ class Counter extends Component {
     this.setState({ count: this.state.count + 1 }); //pass to state, will merge or overwrite if exists
   };
 
+  handleDelete = (counterId) => {
+    //this.setState and pass only the counters, as above will overwrite with new array minus removed counter
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
+    this.setState({ counters: counters });
+  };
+
   /*
   cheat way of passing parameter
   doHandleIncrement = () => {
