@@ -3,8 +3,20 @@ import React, { Component } from "react";
 //imrc enter -- import react, cc enter --- create class
 
 class Counter extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      //ajax call for new data from the server
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("Counter - Unmount");
+  }
+
   render() {
-    console.log(this.props);
+    console.log("counter - rendered");
     return (
       <div>
         {this.props.children}

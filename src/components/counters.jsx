@@ -3,6 +3,7 @@ import Counter from "./counter";
 
 class Counters extends Component {
   render() {
+    console.log("counters - rendered");
     const { onReset, counters, onDelete, onIncrement } = this.props; //destructuring
 
     //Passing <h4> element as child for rendering possibly different title on each Counter on page, useful for dialogue boxes
