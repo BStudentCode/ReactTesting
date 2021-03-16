@@ -52,11 +52,25 @@ class Counter extends Component {
       If a value can be converted to true, the value is so-called truthy. If a value can be converted to false, the value is so-called falsy.*/
 
     //passing arguments: you can pass arguments by creating arrow method in onClick event in button or whatever event you are tying to
+    //the props of this component are all within return ()
     return (
       <div>
-        <button onClick={() => this.handleIncrement(argument)}></button>
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {this.renderTags()}
+        <div>
+          {this.props.children}
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+          <button
+            onClick={() => this.handleIncrement()}
+            className="btn btn-secondary btn-sm"
+          >
+            Increment
+          </button>
+          <button
+            onClick={this.props.onDelete}
+            className="btn btn-danger btn-sm m-2"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     );
   }
@@ -66,3 +80,6 @@ export default Counter;
 
 /*JSX EXPRESSIONS ARE JUST LIKE NORMAL JAVASCRIPT OBJECTS - RETURN FROM FUNC, PASS TO FUNC, USE THEM AS VALUE OF CONST/VARIABLE
 JSX EXPRESSIONS <button style={{ width: "500px" }}> etc*/
+
+//THE COMPONENT THAT OWNS A PIECE OF THE STATE SHOULD BE THE ONE MODIFYING IT EG COUNTERS MODIFY COUNTERS STATE
+//raise events instead from one component to the other, eg Counter raise onDelete() event to Counters handleDelete()

@@ -10,13 +10,21 @@ class Counters extends Component {
       { id: 4, value: 0 },
     ],
   };
+
+  handleDelete = () => {
+    console.log("Event Handler Called");
+  };
+
   render() {
     //Passing <h4> element as child for rendering possibly different title on each Counter on page, useful for dialogue boxes
     //Easier way is to add another property to Counter eg id={counter.id} and wrap that in <h4> on counter.jsx render()
+
+    //Counter onDelete=this.handleDelete --- added onDelete method in Counter and it recognises it as prop here
     return (
       <div>
         {this.state.counters.map((counter) => (
           <Counter
+            onDelete={this.handleDelete}
             key={counter.id}
             value={counter.value}
             selected={true}
