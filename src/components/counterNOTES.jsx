@@ -9,6 +9,9 @@ class Counter extends Component {
     value: this.props.value, //get the value from the properties and set the count to this
   };
 
+  //PROPERTIES = DATA THAT WE GIVE TO A COMPONENT
+  //STATE = DATA THAT IS LOCAL/PRIVATE TO THAT COMPONENT
+
   //bind so that when calling this in handleIncrement() it refers to object (Counter) and not undefined
   /*constructor() {
     super();
