@@ -6,7 +6,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    tags: [],
+    value: this.props.value, //get the value from the properties and set the count to this
   };
 
   //bind so that when calling this in handleIncrement() it refers to object (Counter) and not undefined
